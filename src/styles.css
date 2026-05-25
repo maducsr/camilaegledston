@@ -1,0 +1,123 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-serif: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-champagne: var(--champagne);
+  --color-ivory: var(--ivory);
+  --color-espresso: var(--espresso);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.125rem;
+
+  /* Boutique hotel — quiet luxury palette */
+  --ivory: oklch(0.985 0.006 78);            /* warm off-white */
+  --background: oklch(0.978 0.008 80);
+  --champagne: oklch(0.945 0.018 78);         /* champagne base */
+  --champagne-deep: oklch(0.91 0.022 78);
+  --gold: oklch(0.78 0.06 78);                /* soft champagne metallic */
+  --gold-soft: oklch(0.86 0.04 80);
+  --espresso: oklch(0.28 0.018 50);           /* very discreet espresso brown */
+  --foreground: oklch(0.3 0.018 55);          /* warm graphite text */
+
+  --card: oklch(0.99 0.005 80);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.99 0.005 80);
+  --popover-foreground: var(--foreground);
+
+  --primary: oklch(0.32 0.018 55);
+  --primary-foreground: oklch(0.985 0.006 78);
+  --secondary: oklch(0.945 0.014 78);
+  --secondary-foreground: oklch(0.3 0.018 55);
+  --muted: oklch(0.93 0.012 78);
+  --muted-foreground: oklch(0.52 0.014 60);   /* warm gray */
+  --accent: oklch(0.86 0.04 80);
+  --accent-foreground: oklch(0.3 0.018 55);
+  --destructive: oklch(0.55 0.16 25);
+  --destructive-foreground: oklch(0.985 0.006 78);
+  --border: oklch(0.89 0.014 78);
+  --input: oklch(0.91 0.012 78);
+  --ring: oklch(0.78 0.06 78);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: var(--espresso);
+  }
+  p { color: var(--muted-foreground); }
+  ::selection { background: var(--gold-soft); color: var(--espresso); }
+}
+
+@layer utilities {
+  .font-serif { font-family: var(--font-serif); }
+  .font-script { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
+  .tracking-luxe { letter-spacing: 0.42em; }
+  .tracking-elegant { letter-spacing: 0.22em; }
+  .gold-text { color: var(--gold); }
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  }
+  .hair-rule { height: 1px; background: var(--gold); opacity: .6; }
+  .fade-up { animation: fadeUp 1.4s cubic-bezier(.22,.61,.36,1) both; }
+  .fade-in { animation: fadeIn 1.6s ease-out both; }
+  .delay-1 { animation-delay: .15s; }
+  .delay-2 { animation-delay: .35s; }
+  .delay-3 { animation-delay: .55s; }
+  .delay-4 { animation-delay: .75s; }
+  .delay-5 { animation-delay: .95s; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
